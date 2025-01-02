@@ -1,0 +1,85 @@
+﻿@model PagedList.IPagedList<FerrazIrrigacoes.Models.Lancamento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lancamentos</h2>
+
+@if (TempData["erro"] != null)
+{
+    <script>
+        var texto = '@TempData["erro"]';
+        alert(texto);
+    </script>
+}
+
+<p>
+    @Html.ActionLink("Novo", "Create", null, new { @class = "btn btn-success btn-sm" })
+</p>
+<table class="table table-bordered table-hover table-striped bg-white">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayName("Pagamento")
+            </th>
+            <th>
+                @Html.DisplayName("Valor")
+            </th>
+            <th>
+                @Html.DisplayName("Descrição")
+            </th>
+            <th>
+                @Html.DisplayName("Data")
+            </th>
+            <th>
+                @Html.DisplayName("Opções")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(item.Movimento == "C" ? "Crédito" : item.Movimento == "D" ? "Dinheiro" : item.Movimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td style="text-align: center;">
+                    <div class="btn-group" role="group">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="text-align: center;">
+    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("Anterior", "Index", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }, new { @class = "btn btn-primary btn-sm" })
+    }
+    else
+    {
+        @:< Anterior
+    }
+
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Próxima", "Index", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }, new { @class = "btn btn-primary btn-sm" })
+        @Html.ActionLink("Voltar ao inicio", "Index", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }, new { @class = "btn btn-info btn-sm" })
+    }
+</div>

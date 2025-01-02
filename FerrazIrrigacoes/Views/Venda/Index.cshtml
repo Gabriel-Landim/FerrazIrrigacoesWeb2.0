@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<FerrazIrrigacoes.Models.Venda>
+
+@{
+    ViewBag.Title = "Lista de Vendas";
+}
+
+<h2 class="text-center">Lista de Vendas</h2>
+
+@if (TempData["erro"] != null)
+{
+    <script>
+        var texto = '@TempData["erro"]';
+        alert(texto);
+    </script>
+}
+
+<table class="table table-bordered table-hover table-striped bg-white">
+    <thead class="thead-light">
+        <tr>
+            <th>@Html.DisplayName("Data")</th>
+            <th>@Html.DisplayName("Valor")</th>
+            <th>@Html.DisplayName("Mão de Obra")</th>
+            <th>@Html.DisplayName("Desconto")</th>
+            <th>@Html.DisplayName("Cliente")</th>
+            <th>@Html.DisplayName("Pagamento")</th>
+            <th class="text-center">@Html.DisplayName("Ações")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.DataVenda)</td>
+                <td>@Html.DisplayFor(modelItem => item.Valor)</td>
+                <td>@Html.DisplayFor(modelItem => item.MaodeObra)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desconto)%
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.Cliente.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.FormaDePagamento1.Descricao)</td>
+                <td class="text-center">
+                    <div class="btn-group" role="group">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm me-2" })
+                        @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="text-center">
+    <p>Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+
+    <div class="btn-group" role="group">
+        @if (Model.HasPreviousPage)
+        {
+            @Html.ActionLink("Anterior", "Index", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }, new { @class = "btn btn-primary btn-sm" })
+        }
+        else
+        {
+            <span class="btn btn-secondary btn-sm disabled">Anterior</span>
+        }
+
+        @if (Model.HasNextPage)
+        {
+            @Html.ActionLink("Próxima", "Index", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }, new { @class = "btn btn-primary btn-sm" })
+        }
+        else
+        {
+            <span class="btn btn-secondary btn-sm disabled">Próxima</span>
+        }
+    </div>
+</div>

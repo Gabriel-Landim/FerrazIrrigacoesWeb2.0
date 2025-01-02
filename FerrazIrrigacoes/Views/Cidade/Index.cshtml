@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<FerrazIrrigacoes.Models.Cidade>
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (TempData["erro"] != null)
+{
+    <script>
+        var texto = '@TempData["erro"]';
+        alert(texto);
+    </script>
+}
+
+<h2 class="text-center">Lista de Cidades
+    <i class="fas fa-arrow-right-to-city text-success" style="font-size: 3rem; cursor: pointer; color: #31c533;" 
+       onclick="window.location='@Url.Action("Create", "Cidade")'"></i>
+</h2>
+
+<table class="table" style="background-color: white;">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Nome")</th>
+            <th>@Html.DisplayName("CodigoNome")</th>
+            <th>@Html.DisplayName("UF")</th>
+            <th style="text-align: center;">@Html.DisplayName("Ações")</th> <!-- Alinhando o cabeçalho ao centro -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.CidadeNome)</td>
+                <td>@Html.DisplayFor(modelItem => item.CidadeCodIbge)</td>
+                <td>@Html.DisplayFor(modelItem => item.CidadeUF)</td>
+                <td style="text-align: center;"> <!-- Alinhando o conteúdo ao centro -->
+                    <div class="btn-group" role="group">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="text-align: center;">
+    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+    @if (Model.HasPreviousPage)
+    {
+        <div class="btn-group" role="group">
+            @Html.ActionLink("Anterior", "Index", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+    }
+    else
+    {
+        @:< Anterior
+    }
+
+    @if (Model.HasNextPage)
+    {
+        <div class="btn-group" role="group">
+            @Html.ActionLink("Próxima", "Index", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }, new { @class = "btn btn-primary btn-sm" })
+            @Html.Raw(" ")
+            @Html.ActionLink("Voltar ao início", "Index", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }, new { @class = "btn btn-info btn-sm" })
+        </div>
+    }
+</div>
