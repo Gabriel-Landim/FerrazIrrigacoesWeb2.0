@@ -5,12 +5,12 @@ O sistema Ferraz Irrigações consiste em um sistema de cadastro de serviços e 
 Funcionalidades do Produto
 ______________________________________________________________________________________________________________
 
-Tela de Login
+# Tela de Login
 A tela de login é o ponto de entrada no sistema. Para acessá-lo, o usuário deve inserir um nome e uma senha previamente cadastrados.
 
 ______________________________________________________________________________________________________________
 
-Tela Inicial
+# Tela Inicial
 Após o login, a tela inicial exibe:
 
  * Informações de abertura de caixa, como o valor inicial.
@@ -21,7 +21,7 @@ Após o login, a tela inicial exibe:
 
 ______________________________________________________________________________________________________________
 
-Tela de Cliente
+# Tela de Cliente
 Nesta tela, é possível:
 
  * Visualizar dados cadastrados de clientes: Nome, CPF, Telefone, E-mail e Endereço.
@@ -29,41 +29,41 @@ Nesta tela, é possível:
 
 ______________________________________________________________________________________________________________
 
-Lista de Empresas
+# Lista de Empresas
 Exibe informações sobre as organizações cadastradas, como: Nome Fantasia, Razão Social, CNPJ e Telefone.
  * Permite o cadastro de novas empresas, inserindo dados como Nome Fantasia, Razão Social, CNPJ e Telefone.
 
 ______________________________________________________________________________________________________________
 
-Cadastro de Cidade
+# Cadastro de Cidade
 Apresenta as cidades cadastradas no sistema, com detalhes como: Nome da Cidade, Código, UF.
 * Permite o cadastro de novas cidades, informando: Nome da Cidade, Código IBGE, UF e Código do País.
 
 ______________________________________________________________________________________________________________
 
-Seção Produtos
+# Seção Produtos
 Lista de Produtos
 * Exibe produtos cadastrados com informações como: Nome, Descrição, Quantidade em Estoque, Valor Unitário, Marca e Tipo de Medida.
 * Permite o cadastro de novos produtos, adicionando: Nome, Descrição, Estoque, Valor, Marca, Categoria/Tipo e Unidade de Medida.
 
 ______________________________________________________________________________________________________________
 
-Tela Categorias
+# Tela Categorias
 
 * Exibe as categorias dos produtos cadastrados, como: tubulação, elétrica, entre outros.
 * Permite a criação de novas categorias, inserindo o tipo de produto.
 
 ______________________________________________________________________________________________________________
 
-Tela Marcas
+# Tela Marcas
 
 * Exibe as marcas cadastradas no sistema, como: Tigre, Hunter, Krona.
 * Permite o cadastro de novas marcas, inserindo apenas o nome.
 
 ______________________________________________________________________________________________________________
 
-Seção Ordem de Serviço
-Nova Venda
+# Seção Ordem de Serviço
+# Nova Venda
 
 * Registro de vendas com dados como: Nome do Cliente e Data da Venda.
 * Adição de produtos com informações automáticas de valores, definindo a quantidade desejada.
@@ -71,7 +71,7 @@ Nova Venda
 
 ______________________________________________________________________________________________________________
 
-Tela de Pagamento
+# Tela de Pagamento
 
  * Insere detalhes como:
    - Forma de pagamento (débito, crédito, pix, dinheiro).
@@ -81,20 +81,20 @@ Tela de Pagamento
 
 ______________________________________________________________________________________________________________
 
-Lista de Vendas
+# Lista de Vendas
 
 * Exibe detalhes das vendas realizadas: Data, Valor Total, Valor da Mão de Obra, Desconto, Nome do Cliente e Forma de Pagamento.
 
 ______________________________________________________________________________________________________________
 
-Tela de Lançamentos
+# Tela de Lançamentos
 
 * Exibe informações detalhadas sobre as vendas: Forma de Pagamento, Valor, Descrição, Data.
 * Possui opções para editar ou excluir registros.
 
 ______________________________________________________________________________________________________________
 
-Gerenciamento de Caixa
+# Gerenciamento de Caixa
 
 * Exibe o status do caixa (aberto ou fechado), data de abertura/fechamento e valor inicial.
 * Permite o fechamento do caixa clicando em Fechar Caixa.
