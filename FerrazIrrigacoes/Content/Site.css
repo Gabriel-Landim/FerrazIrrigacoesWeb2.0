@@ -260,12 +260,12 @@ html body {
     }
 
     .user-profile h3 {
-        font-size: 1rem;
+        font-size: 1.5rem;
         font-weight: 600;
     }
 
     .user-profile span {
-        font-size: 0.775rem;
+        font-size: 1rem;
         font-weight: 600;
     }
 
